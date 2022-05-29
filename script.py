@@ -8,6 +8,11 @@ import os
 p = re.compile(r'style="background-image:url\((.*?)\);')
 url = input("Sticker pack ID >> ")
 
+# go on https://store.line.me/stickershop, find a pack you like
+# click on the page then take the number you see after product/
+# for example if you want https://store.line.me/stickershop/product/19142873/en
+# then the sticker pack ID is 19142873.
+
 url = "{}{}{}".format("https://store.line.me/stickershop/product/", url, "/ja")
 save = input("where to save >> ")
 
@@ -15,8 +20,8 @@ index = 0
 
 r = requests.get(url)
 
-おわってない = "⬜"
-おわってる = "⬛"
+ndone = "⬜"
+done = "⬛"
 
 t = p.findall(r.text)
 length = len(t)
@@ -28,9 +33,9 @@ except FileExistsError:
     pass
 
 for s in t:
-    おわってるすう = round((index/length)*10)
-    おわってないすう = 10 - おわってるすう
-    print('\r' + おわってる*おわってるすう + おわってないすう*おわってない, end="")
+    donecount = round((index/length)*10)
+    ndonecount = 10 - donecount
+    print('\r' + done*donecount + ndonecount*ndone, end="")
     with open('temp/temp.png', 'wb') as f_out:
         r = requests.get(s, stream=True)
         for chunk in r.iter_content(chunk_size=1024):
