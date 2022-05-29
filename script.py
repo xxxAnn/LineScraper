@@ -5,7 +5,7 @@ import requests
 import re
 import os
 
-p = re.compile(r'style="background-image:url\((.*?);compress=true')
+p = re.compile(r'style="background-image:url\((.*?)\);')
 url = input("Sticker pack ID >> ")
 
 url = "{}{}{}".format("https://store.line.me/stickershop/product/", url, "/ja")
