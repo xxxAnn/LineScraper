@@ -13,7 +13,7 @@ url = input("Sticker pack ID >> ")
 # for example if you want https://store.line.me/stickershop/product/19142873/en
 # then the sticker pack ID is 19142873.
 
-url = "{}{}{}".format("https://store.line.me/stickershop/product/", url, "/ja")
+url = f"https://store.line.me/stickershop/product/{url}/ja"
 save = input("where to save >> ")
 
 index = 0
